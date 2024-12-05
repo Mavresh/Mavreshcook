@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About YouCook</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff7043;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav ul li a.button:hover {
+            background-color: #ff4500;
+        }
+
+        main {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        main h1 {
+            color: #ff6347;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        main button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        main button:hover {
+            background-color: #ff4500;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About YouCook</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="button">Home</a></li>
+                <li><a href="{{ url_for('recipes') }}" class="button">Recipes</a></li>
+                <li><a href="{{ url_for('favorites') }}" class="button">Favorites</a></li>
+                <li><a href="{{ url_for('about') }}" class="button"><em>About<</em></a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>About</h1>
+        <p>Your one-stop destination for discovering delicious recipes.</p>
+        <button onclick="readmore()">Read more</button>
+    </main>
+
+    <div class="footer">
+        &copy; 2024 YouCook. All rights reserved.
+    </div>
+
+    <script>
+        function readmore() {
+            alert("Button created successfully!");
+        }
+    </script>
+</body>
+</html>

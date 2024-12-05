@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouCook - Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; 
+        }
+
+        header {
+            background-color: #ff6347;
+            color: white;
+            padding: 20px 20px; 
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box; 
+        }
+        
+        header h1 {
+            font-size: 20px; 
+            margin: 0; 
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a, .nav-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover, .nav-btn:hover {
+            background-color: #e5533d;
+        }
+
+        main {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 60px; 
+        }
+
+        main h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px; 
+        }
+
+        form div {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        form input[type="text"], form input[type="password"], form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form input[type="submit"] {
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #e5533d;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+       
+
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>YouCook</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}" class="nav-btn">Home</a></li>
+            <li><a href="{{ url_for('recipes') }}" class="nav-btn">Recipes</a></li>
+            <li><a href="{{ url_for('login') }}" class="nav-btn">Login</a></li>
+            <li><a href="{{ url_for('register') }}" class="nav-btn">Register</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Register</h1>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.first_name.label }}<br>
+            {{ form.first_name() }}<br>
+            {% for error in form.first_name.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.last_name.label }}<br>
+            {{ form.last_name() }}<br>
+            {% for error in form.last_name.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.email.label }}<br>
+            {{ form.email() }}<br>
+            {% for error in form.email.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.password.label }}<br>
+            {{ form.password() }}<br>
+            {% for error in form.password.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.confirm_password.label }}<br>
+            {{ form.confirm_password() }}<br>
+            {% for error in form.confirm_password.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+    <div class="login-link">
+        <p>Already have an account?</p>
+        <a href="{{ url_for('login') }}" class="nav-btn">Login</a>
+    </div>
+</main>
+
+<!-- <footer>
+    <p>&copy; 2024 YouCook. All rights reserved.</p>
+</footer> -->
+
+</body>
+</html>

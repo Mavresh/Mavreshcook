@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouCook - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+    
+        header {
+            background-color: #ff7043;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .navbar-brand img {
+            height: 50px; 
+            margin-right: 10px; 
+        }
+    
+        .navbar-brand h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0; 
+        }
+    
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+    
+        nav ul li a.button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ff7043;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1em;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+    
+        nav ul li a.button:hover {
+            background-color: #ff5722;
+        }
+    
+        main {
+            padding: 40px;
+            text-align: center;
+        }
+    
+        main h1 {
+            color: #ff5722;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    
+        main p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    
+        main a.button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #ff7043;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+    
+        main a.button:hover {
+            background-color: #ff5722;
+        }
+    
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        .logout-btn {
+            background-color: #ff7043;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+    
+        .logout-btn:hover {
+            background-color: #ff5722;
+        }
+    </style>
+    
+</head>
+<body>
+
+<header>
+    <div class="navbar-brand">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="YouCook Logo">
+        <h1>YouCook</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}" class="button">Home</a></li>
+            <li><a href="{{ url_for('recipes') }}" class="button">Recipes</a></li>
+            <li><a href="{{ url_for('about') }}" class="button">About</a></li>
+            {% if current_user.is_authenticated %}
+                <li>
+                    <form action="{{ url_for('logout') }}" method="post" class="nav-form">
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}" class="button">Login</a></li>
+                <li><a href="{{ url_for('register') }}" class="button">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Welcome to YouCook!</h1>
+    <p>Your one-stop destination for discovering delicious recipes.</p>
+    <p><a href="{{ url_for('register') }}" class="button">Get Started</a></p>
+</main>
+
+<footer>
+    <p>&copy; 2024 YouCook. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

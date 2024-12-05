@@ -1,0 +1,135 @@
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+header {
+  background-color: #ff6347;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #e5533d; /* Add a border to separate header from content */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px; /* Increase font size for better readability */
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content Styles */
+main {
+  padding: 40px;
+  text-align: center;
+  background-color: #f9f9f9; /* Match background color with body */
+}
+
+main h1 {
+  color: #333;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+main p {
+  color: #666;
+  font-size: 18px;
+  line-height: 1.8; /* Slightly increase line height for better readability */
+}
+
+main a.button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff6347;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px; /* Adjust font size for buttons */
+}
+
+main a.button:hover {
+  background-color: #e5533d;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px; /* Adjust font size for footer text */
+}
+
+/* Error Message Styles */
+.error {
+  color: red;
+  font-size: 0.875em;
+}
+
+/* Recipe Card Styles */
+.recipe-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 800px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.recipe-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  .recipe-card {
+    width: 90%;
+  }
+
+  main {
+    padding: 20px;
+  }
+}

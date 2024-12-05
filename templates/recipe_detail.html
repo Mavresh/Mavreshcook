@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ selected_recipe.title }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff6347;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #ccc;
+        }
+
+        .recipe-image, .ingredient-image {
+            display: block;
+            max-width: 60%;
+            height: auto;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #ff6347;
+            margin-top: 30px;
+            border-bottom: 2px solid #ff6347;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #e9e9e9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1.2em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        li img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-top: 20px;
+            text-align: justify;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #ff6347;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            border: 2px solid #ff6347;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        .back-link:hover {
+            background-color: #ff6347;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #aaa;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ selected_recipe.title }}</h1>
+        <img class="recipe-image" src="{{ url_for('static', filename=selected_recipe.images) }}" alt="{{ selected_recipe.title }}">
+        
+        <h2>Ingredients:</h2>
+        <ul>
+            {% for ingredient in selected_ingredients %}
+                <li>
+                    <img src="{{ url_for('static', filename='images/chicken.jpg') }}" alt="Chicken Curry">
+
+                    {{ ingredient.ingredient_name }}
+                </li>
+            {% endfor %}
+        </ul>
+        
+
+        <h2>Instructions:</h2>
+        <p>{{ selected_recipe.instructions }}</p>
+
+        <a class="back-link" href="{{ url_for('recipes') }}">Back to Recipes</a>
+        <form method="POST" action="{{ url_for('toggle_favorite', recipe_id=selected_recipe.id) }}">
+            <button type="submit" class="back-link">
+                {% if is_favorite %}
+                    Remove from Favorites
+                {% else %}
+                    Add to Favorites
+                {% endif %}
+            </button>
+        </form>
+        
+        
+    </div>
+
+    <!-- <form method="POST" action="{{ url_for('toggle_favorite', recipe_id=selected_recipe.id) }}">
+        <button type="submit" class="back-link">
+            {% if is_favorite %}
+                Remove from Favorites
+            {% else %}
+                Add to Favorites
+            {% endif %}
+        </button>
+    </form> -->
+
+    <div class="footer">
+        &copy; 2024 YouCook. All rights reserved.
+    </div>
+</body>
+</html>
